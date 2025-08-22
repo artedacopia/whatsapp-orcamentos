@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INÍCIO</title>
+    <link rel="shortcut icon" href="imagens/icon.png" type="image/x-icon">
+    <script type="text/javascript" src="scripts/qrcode/jquery.min.js"></script>
+    <script type="text/javascript" src="../server.js"></script>
+    <script type="text/javascript" src="scripts/qrcode/qrcode.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- ADICIONA CALCULO DE PLACA COMPLETA E DE CAVALETE -->
+</head>
+<body>
+    <main>
+        <section>
+            <article id="article_orcamentos" class="coluna">
+                    <h1>Faça seu Orçamento</h1>
+        
+                    <p class="pform" id="pmaterial">
+                        <label class="titulo" for="material">Material:</label>
+                        <select id="material"></select>
+                    </p>
+        
+                    <p class="pform">
+                        <div id="verniz-container">
+                            <label>
+                                <input type="checkbox" id="verniz"> Aplicar Verniz (+R$15/m²)
+                            </label>
+                        </div>
+                    </p>
+
+                    <p id="p-quant" class="pform">
+                        <label for="quantidade" class="titulo">Quantidade:</label>
+                        <input type="number" id="quantidade" placeholder="Digite a quantidade">
+                    </p>
+
+                    <p class="pform">
+                        <label for="altura" class="titulo">Altura (cm):</label><br>
+                        <input type="number" id="altura" placeholder="Digite a altura">
+                    </p>
+
+                    <p class="pform">
+                        <label for="largura" class="titulo">Largura (cm):</label>
+                        <input type="number" id="largura" placeholder="Digite a largura">
+                    </p>
+                    <button id="calcular">Calcular</button>
+
+                    <div id="resultado"></div>
+
+                    <button id="copiar" style="display: none; justify-content: grid; text-align:center;">Copiar Resultado</button>
+            </article>
+        </section>
+    </main>
+    <script src="scripts/orcamentos.js"></script>
+    <script src="scripts/load.js"></script>
+</body>
+</html>

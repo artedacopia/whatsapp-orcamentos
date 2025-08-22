@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Orçamentos",
+  "version": "1.0",
+  "description": "Adiciona botão no WhatsApp Web para abrir ferramenta de orçamentos.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["orcamentos.html", "orcamentos.js", "style.css"],
+      "matches": ["https://web.whatsapp.com/*"]
+    }
+  ]
+}
