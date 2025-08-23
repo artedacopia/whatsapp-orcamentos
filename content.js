@@ -35,8 +35,8 @@ function criarPainel() {
   painel.style.position = "fixed";
   painel.style.top = "0";
   painel.style.right = "0";
-  painel.style.width = "400px";
-  painel.style.height = "100%";
+  painel.style.width = "250px";
+  painel.style.height = "85%";
   painel.style.background = "white";
   painel.style.boxShadow = "0 0 15px rgba(0,0,0,0.5)";
   painel.style.zIndex = "9998";
