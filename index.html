@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamentos</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            background: rgb(193, 228, 240);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1em;
+        }
+        div#container{
+            width: 250px;
+            height: 80vw;
+            /* border: 5px dashed rgb(24, 130, 218); */
+            display: grid;
+            grid-template-rows: 40px 3fr 1fr 20px;
+        }
+
+        div#titulo{
+            grid-row: 1 / 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:rgb(24, 130, 218);
+            color: white
+        }
+
+        div#titulo > h1{
+            font-size: 1em;
+        }
+
+        div#dados{
+            /* border: 1px dashed red; */
+            grid-row: 2 / 3;
+            display: grid;
+            grid-template-rows: 2fr repeat(4, 1fr);
+        }
+
+        div#materiais{
+            display: grid;
+            grid-template-rows: 1fr 1fr 2fr;
+        }
+
+        .dadotopo{
+            background: rgb(35, 180, 224);
+            color: white;
+            font-weight: bolder;
+            height: 25px;
+            text-align: center;
+            align-self: end;
+            align-content: center;
+            border-radius: 10px 10px 0px 0px;
+        }
+
+        .dadobaixo{
+            width: 100%;
+            height: 30px;
+            border: none;
+            box-shadow: 1px 1px 3px rgba(7, 110, 124, 0.342);
+            cursor: pointer;
+            border-radius: 0px 0px 10px 10px;
+            text-align: center;
+        }
+
+        div#boxquantidade, #boxaltura, #boxlargura{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="titulo">
+            <h1>Gerador de Orçamentos</h1>
+        </div>
+        <div id="dados">
+            <div id="materiais">
+                <label for="material_opt" class="dadotopo">Material: </label>
+                <select name="material_opt" id="material_opt" class="dadobaixo">
+                    <optgroup label="Lona">
+                        <option value="lona380">Lona 380 GF</option>
+                        <option value="lona440">Lona 440 GF</option>
+                        <option value="lonafront">Lona FrontLight</option>
+                        <option value="lonafosca">Lona Fosca</option>
+                    </optgroup>
+                    <optgroup label="Vinil">
+                        <option value="avery">Vinil Avery</option>
+                        <option value="blackout">Vinil Blackout</option>
+                        <option value="espelhado">Vinil Espelhado</option>
+                        <option value="fosco">Vinil Fosco</option>
+                        <option value="perfurado">Vinil Perfurado</option>
+                        <option value="transparente">Vinil Transparente</option>
+                    </optgroup>
+                    <option value="outdoor">Papel Outdoor</option>
+                </select>
+                <div id="acabamento">
+
+                </div>
+            </div>
+
+
+
+            <div id="boxquantidade">
+                <label for="quantidade" class="dadotopo">Quantidade</label>
+                <input type="number" name="quantidade" id="quantidade" class="dadobaixo">
+            </div>
+
+            <div id="boxaltura">
+                <label for="altura" class="dadotopo">Altura(cm)</label>
+                <input type="number" name="altura" id="altura" class="dadobaixo">
+            </div>
+
+            <div id="boxlargura">
+                <label for="largura" class="dadotopo">Largura(cm)</label>
+                <input type="number" name="largura" id="largura" class="dadobaixo">
+            </div>
+
+            Colocar Altura e Largura lado a lado
+            
+        </div>
+        <div id="resultado"></div>
+    </div>
+</body>
+</html>
+
+
+<!-- "LONA 380 GF": { "1": 70.00, "2": 60.00, "3": 55.00 },
+"LONA 440 GF": { "1": 75.00, "2": 65.00, "3": 60.00 },
+"LONA BACKLIGHT": { "1": 120.00, "2": 110.00, "3": 100.00 },
+"LONA FOSCA SEM TRAMA": { "1": 120.00, "2": 110.00, "3": 100.00 },
+"PAPEL OUTDOOR": { "1": 33.00, "2": 33.00, "3": 33.00 },
+"VINIL AVERY": { "1": 90.00, "2": 68.00, "3": 65.00 },
+"VINIL BLACKOUT": { "1": 100.00, "2": 75.00, "3": 70.00 },
+"VINIL ESPELHADO": { "1": 120.00, "2": 120.00, "3": 120.00 },
+"VINIL FOSCO": { "1": 100.00, "2": 90.00, "3": 85.00 },
+"VINIL PERFURADO": { "1": 120.00, "2": 120.00, "3": 120.00 },
+"VINIL RECORTADO": { "1": 120.00, "2": 100.00, "3": 85.00 },
+"VINIL TRANSPARENTE": { "1": 76.00, "2": 76.00, "3": 76.00 }, -->
