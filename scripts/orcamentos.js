@@ -19,27 +19,21 @@
         let verniz = document.querySelector("#boxverniz");
         let recorte = document.querySelector("#boxrecorte");
         let semacabamentos = document.querySelector("#semacabamentos");
+        let comverniz = document.querySelector("#verniz");
+        let comrecorte = document.querySelector("#recorte");
 
         let permiteverniz = materiais[material].verniz;
         let permiterecorte = materiais[material].recorte;
 
-        if (permiteverniz){
-            verniz.style.display = "grid";
-        } else {
-            verniz.style.display = "none";
-        }
+        verniz.style.display = permiteverniz ? "grid" : "none";
+        recorte.style.display = permiterecorte ? "grid" : "none";
 
-        if (permiterecorte){
-            recorte.style.display = "grid";
-        } else {
-            recorte.style.display = "none";
-        }
+        semacabamentos.style.display = (permiteverniz || permiterecorte) ? "none" : "grid";
 
-        if (permiteverniz && permiterecorte || permiteverniz || permiterecorte){
-            semacabamentos.style.display = "none";
-        } else{
-            semacabamentos.style.display = "grid";
-        }
+        //SE !(NÃO)permite verniz (seleção do "comverniz" muda para não selecionado)
+        if(!permiteverniz) comverniz.checked = false;
+        if(!permiterecorte) comrecorte.checked = false;
+
     }
     function calcular(){
         let verniz = document.querySelector("#boxverniz");
