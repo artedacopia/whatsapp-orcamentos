@@ -1,57 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INÍCIO</title>
-    <link rel="shortcut icon" href="imagens/icon.png" type="image/x-icon">
-    <script type="text/javascript" src="scripts/qrcode/jquery.min.js"></script>
-    <script type="text/javascript" src="../server.js"></script>
-    <script type="text/javascript" src="scripts/qrcode/qrcode.js"></script>
+    <title>Orçamentos</title>
     <link rel="stylesheet" href="style.css">
-    <!-- ADICIONA CALCULO DE PLACA COMPLETA E DE CAVALETE -->
 </head>
 <body>
-    <main>
-        <section>
-            <article id="article_orcamentos" class="coluna">
-                    <h1>Faça seu Orçamento</h1>
-        
-                    <p class="pform" id="pmaterial">
-                        <label class="titulo" for="material">Material:</label>
-                        <select id="material"></select>
-                    </p>
-        
-                    <p class="pform">
-                        <div id="verniz-container">
-                            <label>
-                                <input type="checkbox" id="verniz"> Aplicar Verniz (+R$15/m²)
-                            </label>
-                        </div>
-                    </p>
+    <div id="container">
+        <div id="titulo">
+            <h1>Gerador de Orçamentos</h1>
+        </div>
 
-                    <p id="p-quant" class="pform">
-                        <label for="quantidade" class="titulo">Quantidade:</label>
-                        <input type="number" id="quantidade" placeholder="Digite a quantidade">
-                    </p>
+        <div id="dados">
+            <div id="materiais">
+                <label for="material_opt" class="dadotopo">Material: </label>
+                <select name="material_opt" id="material_opt" class="dadobaixo" style="text-align: left; padding-left: 10px">
+                    <optgroup label="Lona">
+                        <option value="lona380">Lona 380 GF</option>
+                        <option value="lona440">Lona 440 GF</option>
+                        <option value="lonafront">Lona FrontLight</option>
+                        <option value="lonafosca">Lona Fosca</option>
+                    </optgroup>
+                    <optgroup label="Vinil">
+                        <option value="avery" selected>Vinil Avery</option>
+                        <option value="blackout">Vinil Blackout</option>
+                        <option value="espelhado">Vinil Espelhado</option>
+                        <option value="fosco">Vinil Fosco</option>
+                        <option value="perfurado">Vinil Perfurado</option>
+                        <option value="transparente">Vinil Transparente</option>
+                    </optgroup>
+                    <option value="outdoor">Papel Outdoor</option>
+                </select>
+            </div>
 
-                    <p class="pform">
-                        <label for="altura" class="titulo">Altura (cm):</label><br>
-                        <input type="number" id="altura" placeholder="Digite a altura">
-                    </p>
+            <div id="acabamento">
+                <div id="semacabamentos">
+                    Sem Opções de Acabamento
+                </div>
+                <div id="boxverniz">
+                    <label for="verniz">Com Verniz?</label>
+                    <input type="checkbox" name="verniz" id="verniz">
+                </div>
+                
+                <div id="boxrecorte">
+                    <label for="recorte">Com recorte?</label>
+                    <input type="checkbox" name="recorte" id="recorte">
+                </div>
+            </div>
 
-                    <p class="pform">
-                        <label for="largura" class="titulo">Largura (cm):</label>
-                        <input type="number" id="largura" placeholder="Digite a largura">
-                    </p>
-                    <button id="calcular">Calcular</button>
+            <div id="info">
+                <div id="boxquantidade">
+                    <label for="quantidade" class="dadotopo">Quantidade</label>
+                    <input type="number" name="quantidade" id="quantidade" class="dadobaixo" placeholder="Quantidade" value="1">
+                </div>
 
-                    <div id="resultado"></div>
+                <div id="boxaltura">
+                    <label for="altura" class="dadotopo">Altura(cm)</label>
+                    <input type="number" name="altura" id="altura" class="dadobaixo" placeholder="Altura" value="100">
+                </div>
 
-            </article>
-        </section>
-    </main>
-    <script src="scripts/orcamentos.js"></script>
-    <script src="scripts/load.js"></script>
+                <div id="boxlargura">
+                    <label for="largura" class="dadotopo">Largura(cm)</label>
+                    <input type="number" name="largura" id="largura" class="dadobaixo" placeholder="Largura" value="100">
+                </div>
+
+            </div>
+
+            <div id="resultado">
+                <textarea name="" id=""></textarea>
+            </div>
+        </div>
+
+    </div>
 </body>
+
+<script src="scripts/orcamentos.js"></script>
+
 </html>

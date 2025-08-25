@@ -1,112 +1,135 @@
-function formatarNumero(num) {
-    return Number.isInteger(num) ? num.toString() : num.toFixed(2);
-}
-
-function calcularTotal() {
-
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    let alturaCM = 0;
-    let larguraCM = 0;
     const materiais = {
-        "LONA 380 GF": { "1": 70.00, "2": 60.00, "3": 55.00 },
-        "LONA 440 GF": { "1": 75.00, "2": 65.00, "3": 60.00 },
-        "LONA BACKLIGHT": { "1": 120.00, "2": 110.00, "3": 100.00 },
-        "LONA FOSCA SEM TRAMA": { "1": 120.00, "2": 110.00, "3": 100.00 },
-        "PAPEL OUTDOOR": { "1": 33.00, "2": 33.00, "3": 33.00 },
-        "VINIL AVERY": { "1": 90.00, "2": 68.00, "3": 65.00 },
-        "VINIL BLACKOUT": { "1": 100.00, "2": 75.00, "3": 70.00 },
-        "VINIL ESPELHADO": { "1": 120.00, "2": 120.00, "3": 120.00 },
-        "VINIL FOSCO": { "1": 100.00, "2": 90.00, "3": 85.00 },
-        "VINIL PERFURADO": { "1": 120.00, "2": 120.00, "3": 120.00 },
-        "VINIL RECORTADO": { "1": 120.00, "2": 100.00, "3": 85.00 },
-        "VINIL TRANSPARENTE": { "1": 76.00, "2": 76.00, "3": 76.00 },
-        // "ARMAÇÃO METALON" :{}
+        "lona380": { "tab1": 70.00, "tab2": 60.00, "tab3": 55.00, "verniz": true, "recorte": false, "complemento": "da Lona 380g"},
+        "lona440": { "tab1": 75.00, "tab2": 65.00, "tab3": 60.00, "verniz": true, "recorte": false, "complemento": "da Lona 440g"},
+        "lonafront": { "tab1": 120.00, "tab2": 110.00, "tab3": 100.00, "verniz": true, "recorte": false, "complemento": "da Lona FrontLight"},
+        "lonafosca": { "tab1": 120.00, "tab2": 110.00, "tab3": 100.00, "verniz": true, "recorte": false, "complemento": "da Lona Fosca"},
+        "avery": { "tab1": 90.00, "tab2": 68.00, "tab3": 65.00, "verniz": true, "recorte": true, "complemento": "do Vinil Avery"},
+        "blackout": { "tab1": 100.00, "tab2": 75.00, "tab3": 70.00, "verniz": true, "recorte": true, "complemento": "do Vinil Blackout"},
+        "espelhado": { "tab1": 120.00, "tab2": 120.00, "tab3": 120.00, "verniz": false, "recorte": false, "complemento": "do Vinil Espelhado"},
+        "fosco": { "tab1": 100.00, "tab2": 90.00, "tab3": 85.00, "verniz": true, "recorte": true, "complemento": "do Vinil Fosco"},
+        "perfurado": { "tab1": 120.00, "tab2": 120.00, "tab3": 120.00, "verniz": false, "recorte": false, "complemento": "do Vinil Perfurado"},
+        "transparente": { "tab1": 76.00, "tab2": 76.00, "tab3": 76.00, "verniz": false, "recorte": true, "complemento": "do Vinil Transparente"},
+        "outdoor": { "tab1": 33.00, "tab2": 33.00, "tab3": 33.00, "verniz": false, "recorte": false, "complemento": "do Papel Outdoor"},
+        "acabamentos": { "recorte1": 120.00, "recorte2": 100.00, "recorte3": 85.00, "verniz": 15.00}
+        
     };
 
-    const materiaisComVerniz = ["LONA 380 GF", "LONA 440 GF", "LONA BACKLIGHT", "LONA FOSCA SEM TRAMA", "VINIL AVERY", "VINIL BLACKOUT", "VINIL FOSCO", "VINIL RECORTADO"];
+    function acabamento(){
+        let material = document.querySelector("#material_opt").value;
+        let verniz = document.querySelector("#boxverniz");
+        let recorte = document.querySelector("#boxrecorte");
+        let semacabamentos = document.querySelector("#semacabamentos");
 
-    const materialSelect = document.getElementById("material");
-    const larguraInput = document.getElementById("largura"); //RECEBE O VALOR DE LARGURA INSERIDO
-    const alturaInput = document.getElementById("altura");
-    const quantidadeInput = document.getElementById("quantidade");
-    const calcularBtn = document.getElementById("calcular");
-    const resultadoDiv = document.getElementById("resultado");
-    const vernizCheckbox = document.getElementById("verniz");
-    const vernizContainer = document.getElementById("verniz-container");
+        let permiteverniz = materiais[material].verniz;
+        let permiterecorte = materiais[material].recorte;
 
-    Object.keys(materiais).forEach(material => {
-        const option = document.createElement("option");
-        option.value = material;
-        option.textContent = material;
-        materialSelect.appendChild(option);
-    });
-
-    materialSelect.addEventListener("change", function () {
-        vernizContainer.style.display = materiaisComVerniz.includes(materialSelect.value) ? "block" : "none";
-    });
-
-    calcularBtn.addEventListener("click", function () {
-        const material = materialSelect.value;
-        const largura = parseFloat(larguraInput.value) / 100;  //CONVERTE O VALOR DE LARGURA INSERIDO DE CENTÍMETROS PARA METROS
-        const altura = parseFloat(alturaInput.value) / 100;
-        const quantidade = parseInt(quantidadeInput.value, 10);
-        const areaTotal = largura * altura * quantidade;
-
-        if (isNaN(largura) || isNaN(altura) || isNaN(quantidade) || largura <= 0 || altura <= 0 || quantidade <= 0) {
-            resultadoDiv.innerHTML = "<p style='color: red;'>Preencha todos os campos corretamente!</p>";
-            return;
+        if (permiteverniz){
+            verniz.style.display = "grid";
+        } else {
+            verniz.style.display = "none";
         }
 
-        let precoPorMetro = materiais[material]["1"];
-        if (areaTotal >= 1) {
-            precoPorMetro = materiais[material]["3"];
-        } else if (areaTotal >= 0.5) {
-            precoPorMetro = materiais[material]["2"];
+        if (permiterecorte){
+            recorte.style.display = "grid";
+        } else {
+            recorte.style.display = "none";
         }
 
-        if (vernizCheckbox.checked && materiaisComVerniz.includes(material)) {
-            precoPorMetro += 15;
+        if (permiteverniz && permiterecorte || permiteverniz || permiterecorte){
+            semacabamentos.style.display = "none";
+        } else{
+            semacabamentos.style.display = "grid";
+        }
+    }
+    function calcular(){
+        let verniz = document.querySelector("#boxverniz");
+        let recorte = document.querySelector("#boxrecorte");
+        let material = document.querySelector("#material_opt").value;
+        let resultado = document.querySelector("#resultado");
+        let quantidade = document.querySelector("#quantidade").value;
+        let altura = document.querySelector("#altura").value / 100;
+        let largura = document.querySelector("#largura").value / 100;
+        let comverniz = document.querySelector("#verniz").checked;
+        let comrecorte = document.querySelector("#recorte").checked;
+        let complemento = materiais[material].complemento;
+        let uni = "unidade";
+        let fica = "custa";
+        let m2unitario = altura*largura;
+        let m2total = m2unitario*quantidade;
+        let precom2 = 0;
+
+        if (m2total >= 1){
+            precom2 = materiais[material].tab3;
+        } else if(m2total >= 0.5){
+            precom2 = materiais[material].tab2;
+        } else{
+            precom2 = materiais[material].tab1;
         }
 
-        let precoTotal = areaTotal * precoPorMetro;
-        const precoPorUnidade = precoTotal / quantidade;
-    
-        let resultadoTexto = `
-        <textarea style="display: block; margin: auto; margin-top: 5px; width: 92%; height: 90%;">1 unidade do(a) ${material}${vernizCheckbox.checked ? " com verniz aplicado" : ""} no tamanho de ${formatarNumero(largura * 100)}x${formatarNumero(altura * 100)}cm custa R$${precoTotal.toFixed(2)}</textarea>
-        `;
-
-        if (quantidade > 1) {
-            resultadoTexto = `
-        <textarea style="display: block; margin: auto; margin-top: 5px; width: 92%; height: 90%;">${quantidade} unidades do(a) ${material}${vernizCheckbox.checked ? " com verniz aplicado" : ""} no tamanho de ${formatarNumero(largura * 100)}x${formatarNumero(altura * 100)}cm custam R$${precoTotal.toFixed(2)}.
-
-Cada unidade sai por R$${formatarNumero(precoPorUnidade)}</textarea>
-        `;
+        if (comverniz){
+            complemento += ` envernizado`;
+            verniz.style.background = "green";
+            verniz.style.color = "white";
+            precom2 += 15;
+        } else {
+            verniz.style.background = "darkred";
+            verniz.style.color = "white";
         }
 
-        if (material == "PAPEL OUTDOOR") {
-            alturaCM = formatarNumero((altura * 100));
-            larguraCM = formatarNumero((largura * 100));
-            if (areaTotal < 1) {
-                precoTotal = 33;
+        if (comrecorte){
+            recorte.style.background = "green";
+            recorte.style.color = "white";
+            if (m2total >= 1){
+                precom2 = materiais["acabamentos"].recorte3;
+            } else if(m2total >= 0.5){
+                precom2 = materiais["acabamentos"].recorte2;
+            } else{
+                precom2 = materiais["acabamentos"].recorte1;
             }
-            if (quantidade > 1){
-                resultadoTexto = `
-                <textarea style="display: block; margin: auto; margin-top: 5px; width: 92%; height: 90%;">*${quantidade} unidades* do *PAPEL OUTDOOR* no tamanho de *${alturaCM}x${larguraCM}cm* custam *R$${precoTotal.toFixed(2)}*
-                
-Cada unidade sai por R$${(precoTotal/quantidade).toFixed(2)}</textarea>
-                `;
-            } else {
-            resultadoTexto = `
-            <textarea style="display: block; margin: auto; margin-top: 5px; width: 92%; height: 90%;">*1 unidade* do *PAPEL OUTDOOR* no tamanho de *${alturaCM}x${larguraCM}cm* custa R$${precoTotal.toFixed(2)}</textarea>
-            `;
+            if(comverniz){
+                complemento += ` e recortado`;
+                precom2 += 15;
+            } else{
+                complemento += ` recortado`
             }
-        } 
-        
-        resultadoDiv.innerHTML = resultadoTexto;
-        resultadoDiv.style.backgroundColor = "white";
-        resultadoDiv.style.color = "black";
-    });
 
+        } else{
+            recorte.style.background = "darkred";
+            recorte.style.color = "white";
+        }
+
+
+
+        let total = quantidade * (altura*largura) * precom2;
+
+        if(material == "outdoor" && m2total < 1){
+            total = 33;
+        }
+
+        if(quantidade != 1){
+            uni = "unidades";
+            fica = "custam";
+        }
+
+        resultado.innerHTML = `<textarea>${quantidade} ${uni} ${complemento} no tamanho de ${altura*100}x${largura*100}cm ${fica} R$${total.toFixed(2)}</textarea>`;
+    }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const material = document.getElementById("material_opt");
+    const verniz = document.getElementById("verniz");
+    const recorte = document.getElementById("recorte");
+    const quantidade = document.getElementById("quantidade");
+    const altura = document.getElementById("altura");
+    const largura = document.getElementById("largura");
+
+    material.addEventListener("change", () => { acabamento(); calcular(); });
+    verniz.addEventListener("change", calcular);
+    recorte.addEventListener("change", calcular);
+    quantidade.addEventListener("input", calcular);
+    altura.addEventListener("input", calcular);
+    largura.addEventListener("input", calcular);
+
+  // primeira renderização
+    acabamento();
+    calcular();
 });
