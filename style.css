@@ -23,7 +23,7 @@ div#container{
     /* border: 5px dashed rgb(24, 130, 218); */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 40px 0px 300px;
+    grid-template-rows: 40px 0px 300px 180px;
 }
 
 div#titulo{
@@ -139,7 +139,7 @@ div#boxlargura{
 div#resultado{
     background: white;
     grid-column: 1 / -1;
-    grid-row: 4 / 6;
+    grid-row: 4 / 5;
 }
 
 div#resultado textarea{
@@ -147,6 +147,34 @@ div#resultado textarea{
     height: 100%;
     border: none;
     padding: 10px;
+}
+
+div#detalhes{
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+    display: grid;
+    gap: 5px;
+    grid-template-rows: 5px repeat(5, 1fr) 5px;
+    justify-content: center;
+    align-content: center;
+}
+
+.detalhes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.detalheesquerda{
+    background:rgb(24, 130, 218);
+    color: white;
+    padding: 3px;
+    padding-left: 8px;
+    text-align: right;
+    grid-column: 1 / 2;
+}
+
+.detalhedireita{
+    background: white;
 }
 
 .dadotopo{
