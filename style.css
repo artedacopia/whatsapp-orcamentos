@@ -46,20 +46,40 @@ div#dados{
     grid-row: 3 / 4;
     display: grid;
     grid-template-rows: 1fr 0.8fr 1fr 2fr;
+    grid-template-columns: 1.5fr 1fr;
 }
 
 div#materiais{
     display: grid;
-    grid-column: 1 / -1;
+    grid-column: 1 / 2;
     grid-row: 1 / 2;
     align-content: center;
     font-size: 1.2em;
     font-weight: bolder;
 }
 
+div#materiais label{
+    width: 90%;
+}
+
 div#materiais select{
-    font-size: 1em;
+    font-size: 0.54em;
     font-weight: bolder;
+    width: 90%;
+}
+
+div#minimo{
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    background: rgb(24, 130, 218);
+    color: white;
+    padding: 5px;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-weight: bolder;
+    cursor: pointer;
 }
 
 div#acabamento{
@@ -113,6 +133,7 @@ div#info{
     grid-template-columns: repeat(3, 1fr);
     align-content: center;
     grid-row: 3 / 4;
+    grid-column: 1 / -1;
 }
 
 div#boxquantidade{
