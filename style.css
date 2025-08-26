@@ -31,6 +31,7 @@ div#titulo{
     grid-row: 1 / 2;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     background:rgb(24, 130, 218);
     color: white
@@ -38,6 +39,21 @@ div#titulo{
 
 div#titulo > h1{
     font-size: 1em;
+}
+
+div#recarregar{
+    font-size: 0.6em;
+    font-weight: bolder;
+    padding: 8px;
+    border-radius: 8px;
+    background:rgb(24, 130, 218);
+    top: 20px;
+    position: absolute;
+}
+
+div#recarregar a{
+    text-decoration: none;
+    color:white;
 }
 
 div#dados{
@@ -75,7 +91,7 @@ div#minimo{
     background: rgb(24, 130, 218);
     color: white;
     padding: 5px;
-    width: 80%;
+    width: 90%;
     border-radius: 10px;
     font-size: 0.8em;
     font-weight: bolder;
