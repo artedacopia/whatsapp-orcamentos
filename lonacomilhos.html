@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="altura">Altura: </label>
+    <input type="number" name="altura" id="altura"  onchange="calcular()"><br><br>
+    <label for="largura">Largura: </label>
+    <input type="number" name="largura" id="largura"  onchange="calcular()">
+    <div id="resultado"></div>
+</body>
+
+<script>
+    const precos = {
+        "lona440": { "tab1": 75.00, "tab2": 65.00, "tab3": 60.00},
+        "precoverniz": 15,
+        "precosolda": 9,
+        "precoilhos": 1.5
+    };
+
+    function calcular() {
+        let resultado = document.getElementById("resultado");
+        let altura = document.getElementById("altura").value;
+        let largura = document.getElementById("largura").value;
+        let m2 = (altura/100)*(largura/100);
+        let ilhosCimaBaixo = 0;
+        let ilhosDosLados = 1;
+        let tamanhoLargura = 0;
+        let tamanhoAltura = 0;
+        while (tamanhoLargura <= largura){
+            ilhosCimaBaixo++;
+            tamanhoLargura += 20;
+        };
+
+        while (tamanhoAltura < altura){
+            ilhosDosLados++;
+            tamanhoAltura += 20;
+        };
+
+
+        resultado.innerHTML = `Ilhós em cima e em baixo: ${ilhosCimaBaixo} | Ilhós nas laterais: ${ilhosDosLados-2}`;
+    };
+
+
+</script>
+</html>
