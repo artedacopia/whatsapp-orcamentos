@@ -59,6 +59,7 @@ function calcular(){
     let recorte = document.querySelector("#boxrecorte");
     let material = document.querySelector("#material_opt").value;
     let resultado = document.querySelector("#resultado");
+    let detalheValorM2 = document.querySelector("#detalheValorM2");
     let quantidade = document.querySelector("#quantidade").value;
     let altura = document.querySelector("#altura").value / 100;
     let largura = document.querySelector("#largura").value / 100;
@@ -124,6 +125,7 @@ function calcular(){
         fica = "custam";
     }
 
+    detalheValorM2.innerHTML = `${precom2}`;
     resultado.innerHTML = `<textarea>${quantidade} ${uni} ${complemento} no tamanho de ${altura*100}x${largura*100}cm ${fica} R$${total.toFixed(2)}</textarea>`;
 
     return total;
