@@ -125,7 +125,7 @@ function calcular(){
         fica = "custam";
     }
 
-    detalheValorM2.innerHTML = `${precom2}`;
+    detalheValorM2.innerHTML = `<textarea>R$${precom2.toFixed(2)}<textarea>`;
     resultado.innerHTML = `<textarea>${quantidade} ${uni} ${complemento} no tamanho de ${altura*100}x${largura*100}cm ${fica} R$${total.toFixed(2)}</textarea>`;
 
     return total;
