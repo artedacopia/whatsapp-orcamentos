@@ -59,7 +59,6 @@ function calcular(){
     let recorte = document.querySelector("#boxrecorte");
     let material = document.querySelector("#material_opt").value;
     let resultado = document.querySelector("#resultado");
-    let detalheValorM2 = document.querySelector("#detalheValorM2");
     let quantidade = document.querySelector("#quantidade").value;
     let altura = document.querySelector("#altura").value / 100;
     let largura = document.querySelector("#largura").value / 100;
@@ -71,6 +70,11 @@ function calcular(){
     let m2unitario = altura*largura;
     let m2total = m2unitario*quantidade;
     let precom2 = 0;
+
+    let detalheValorM2 = document.querySelector("#detalheValorM2");
+    let detalheValorUni = document.querySelector("#detalheValorUni");
+    let detalheM2Total = document.querySelector("#detalheM2Total");
+    let detalheM2Uni = document.querySelector("#detalheM2Uni");
 
     if (m2total >= 1){
         precom2 = materiais[material].tab3;
@@ -126,6 +130,10 @@ function calcular(){
     }
 
     detalheValorM2.innerHTML = `R$${precom2.toFixed(2)}`;
+    /*detalheValorUni.innerHTML = `R$${precom2.toFixed(2)}`;
+    detalheValorTotal.innerHTML = `R$${precom2.toFixed(2)}`;
+    detalheM2Total.innerHTML = `R$${precom2.toFixed(2)}`;
+    detalheM2Uni.innerHTML = `R$${precom2.toFixed(2)}`;*/
     resultado.innerHTML = `<textarea>${quantidade} ${uni} ${complemento} no tamanho de ${altura*100}x${largura*100}cm ${fica} R$${total.toFixed(2)}</textarea>`;
 
     return total;
