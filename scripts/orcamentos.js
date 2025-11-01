@@ -154,7 +154,7 @@ async function quantidademinima(){
         qt++;
         quantidade.value = qt;
         total = calcular();
-        await sleep(35);
+        await sleep(10);
     }
 }
 
