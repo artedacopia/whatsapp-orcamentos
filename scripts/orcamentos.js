@@ -116,9 +116,11 @@ function calcular(){
         recorte.style.color = "white";
     }
 
+    //CÁLCULOS
 
-
-    let total = quantidade * (altura*largura) * precom2;
+    
+    let totalUnitario = (altura*largura) * precom2;
+    let total = quantidade * totalUnitario;
 
     if(material == "outdoor" && m2total < 1){
         total = 33;
@@ -130,10 +132,13 @@ function calcular(){
     }
 
     detalheValorM2.innerHTML = `R$${precom2.toFixed(2)}`;
-    /*detalheValorUni.innerHTML = `R$${precom2.toFixed(2)}`;
-    detalheValorTotal.innerHTML = `R$${precom2.toFixed(2)}`;
-    detalheM2Total.innerHTML = `R$${precom2.toFixed(2)}`;
-    detalheM2Uni.innerHTML = `R$${precom2.toFixed(2)}`;*/
+    
+    detalheValorUni.innerHTML = `R$${totalUnitario.toFixed(2)}`;
+    detalheValorTotal.innerHTML = `R$${total.toFixed(2)}`;
+    
+    detalheM2Uni.innerHTML = `R$${m2unitario.toFixed(2)}`;
+    detalheM2Total.innerHTML = `R$${m2total.toFixed(2)}`;
+    
     resultado.innerHTML = `<textarea>${quantidade} ${uni} ${complemento} no tamanho de ${altura*100}x${largura*100}cm ${fica} R$${total.toFixed(2)}</textarea>`;
 
     return total;
