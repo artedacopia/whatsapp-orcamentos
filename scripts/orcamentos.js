@@ -136,8 +136,8 @@ function calcular(){
     detalheValorUni.innerHTML = `R$${totalUnitario.toFixed(2)}`;
     detalheValorTotal.innerHTML = `R$${total.toFixed(2)}`;
     
-    detalheM2Uni.innerHTML = `R$${m2unitario.toFixed(2)}`;
-    detalheM2Total.innerHTML = `R$${m2total.toFixed(2)}`;
+    detalheM2Uni.innerHTML = `${m2unitario.toFixed(2)}`;
+    detalheM2Total.innerHTML = `${m2total.toFixed(2)}`;
     
     resultado.innerHTML = `<textarea>${quantidade} ${uni} ${complemento} no tamanho de ${altura*100}x${largura*100}cm ${fica} R$${total.toFixed(2)}</textarea>`;
 
